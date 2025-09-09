@@ -1,12 +1,16 @@
 # Momo_EntepriseWeb
 
-# EWD_Group_2
-# Team Members List
-Gabriella Ange Ahirwe 
-Kudakwashe Norman Chikovo
-Oriane Uwineza
-Paul Masamvu
-Samuel Chima Nkpado
+ EWD_Group_2
+ Team Members List
+1.Gabriella Ange Ahirwe 
+
+2.Kudakwashe Norman Chikovo
+
+3.Oriane Uwineza
+
+4.Paul Masamvu
+
+5.Samuel Chima Nkpado
 
 
 
