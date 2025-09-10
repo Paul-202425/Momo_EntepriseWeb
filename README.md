@@ -1,5 +1,52 @@
 # Momo_EntepriseWeb
 
+ # Project_description
+
+This project is part of a continuous formative assessment where we design and develop an enterprise-level fullstack application. The goal is to process, clean, and analyze MoMo (Mobile Money) SMS transaction data in XML format, store it in a relational database, and build a frontend interface for visualization and insights.
+
+🚀 Project Overview
+
+The system will:
+
+Ingest & Parse MoMo SMS data in XML format.
+
+Clean & Categorize the data into meaningful transaction types (e.g., deposits, withdrawals, payments, transfers).
+
+Store & Manage the processed data in a relational database for efficient querying.
+
+Visualize & Analyze transactions through an intuitive frontend dashboard.
+
+ Objectives
+
+Practice collaborative development workflows in a team setting.
+
+Define and document the system architecture (backend, database, and frontend layers).
+
+Apply Agile practices to organize tasks and iterations.
+
+Gain hands-on experience in backend processing, database management, and frontend development.
+
+ Week 1 Focus
+
+For this first sprint, the primary goals are:
+
+Setting up the team’s shared workspace (repository, collaboration tools, and workflows).
+
+Defining the system architecture and tech stack.
+
+Creating an Agile board (sprints, epics, and tasks).
+
+ Tech Stack (Proposed)
+
+Backend: Node.js / Python (for XML parsing & data processing)
+
+Database: PostgreSQL / MySQL
+
+Frontend: React.js (with chart libraries for visualization)
+
+Collaboration: GitHub Projects / Jira (Agile task tracking)
+
+
  # EWD_Group_2
  Team Members List
 
