@@ -65,3 +65,46 @@ CREATE TABLE system_logs (
     FOREIGN KEY (tx_id) REFERENCES transactions(tx_id)
     ON UPDATE CASCADE ON DELETE SET NULL
 ) COMMENT='ETL/process logs linked to transactions when relevant';
+
+-- categories
+INSERT INTO transaction_categories (code, name) VALUES
+('P2P','Peer to Peer Transfer'),
+('AIRTIME','Airtime Top-up'),
+('BILL','Bill Payment'),
+('CASHOUT','Cash Withdrawal'),
+('MERCHANT','Merchant Payment');
+
+-- users
+INSERT INTO users (msisdn, full_name) VALUES
+('250788000001','Alice U'),
+('250788000002','Bob V'),
+('250788000003','Chantal W'),
+('250788000004','David X'),
+('250788000005','Eva Y');
+
+-- transactions
+INSERT INTO transactions (amount, tx_datetime, category_id) VALUES
+(12500.00, '2025-09-18 09:12:00', 1),
+(  500.00, '2025-09-18 10:05:00', 2),
+( 3200.00, '2025-09-18 10:07:10', 5),
+( 9000.00, '2025-09-18 11:22:45', 3),
+( 2500.00, '2025-09-18 12:00:00', 4);
+
+-- participants (roles)
+INSERT INTO transaction_participants (tx_id, user_id, role) VALUES
+(1,1,'sender'), (1,2,'receiver'),
+(2,1,'sender'),
+(3,3,'sender'), (3,5,'merchant'),
+(4,2,'sender'), (4,4,'receiver'),
+(5,5,'sender');
+
+-- logs (some attached to tx, some generic)
+INSERT INTO system_logs (event_type, message, tx_id) VALUES
+('parsed','Parsed message OK',1),
+('validated','All checks passed',1),
+('error','Missing category in payload',NULL),
+('inserted','Row inserted',2),
+('parsed','Parsed message OK',3);
+)
+
+
