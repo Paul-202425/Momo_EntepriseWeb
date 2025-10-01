@@ -40,7 +40,7 @@ Error Codes:
 
 401: Unauthorized
 
-2. Get Transaction by ID
+**2. Get Transaction by ID**
 Endpoint & Method:
 GET /transactions/{id}
 
@@ -67,7 +67,7 @@ Error Codes:
 
 404: Transaction not found
 
-3. Create a New Transaction
+**3. Create a New Transaction**
 Endpoint & Method:
 POST /transactions
 
@@ -99,7 +99,7 @@ Error Codes:
 
 401: Unauthorized
 
-4. Update an Existing Transaction
+**4. Update an Existing Transaction**
 Endpoint & Method:
 PUT /transactions/{id}
 
@@ -130,7 +130,7 @@ Error Codes:
 
 404: Transaction not found
 
-5. Delete a Transaction
+**5. Delete a Transaction**
 Endpoint & Method:
 DELETE /transactions/{id}
 
