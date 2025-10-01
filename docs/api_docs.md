@@ -11,9 +11,6 @@ All endpoints require **Basic Authentication**.
 All requests must include the header:  
 Authorization: Basic <base64_encoded_username:password>
 
-yaml
-Copy code
-
 ---
 
 ## 1. Get All Transactions
@@ -26,8 +23,6 @@ GET /transactions
 Headers:
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 
-cpp
-Copy code
 
 **Response Example (200 OK):**  
 ```json
@@ -52,14 +47,12 @@ GET /transactions/{id}
 Request Example:
 
 vbnet
-Copy code
 GET /transactions/tx001
 Headers:
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 Response Example (200 OK):
 
 ```json
-Copy code
 {
   "id": "tx001",
   "amount": 100.50,
@@ -81,7 +74,6 @@ POST /transactions
 Request Example:
 
 ```json
-Copy code
 {
   "id": "tx003",
   "amount": 75.25,
@@ -93,7 +85,6 @@ Copy code
 Response Example (201 Created):
 
 ```json
-Copy code
 {
   "id": "tx003",
   "amount": 75.25,
@@ -115,7 +106,6 @@ PUT /transactions/{id}
 Request Example:
 
 ```json
-Copy code
 {
   "amount": 80.00,
   "receiver_name": "Grace"
@@ -124,7 +114,6 @@ Copy code
 Response Example (200 OK):
 
 ```json
-Copy code
 {
   "id": "tx003",
   "amount": 80.00,
@@ -148,14 +137,12 @@ DELETE /transactions/{id}
 Request Example:
 
 makefile
-Copy code
 DELETE /transactions/tx003
 Headers:
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 Response Example (200 OK):
 
 ```json
-Copy code
 {
   "message": "Transaction tx003 deleted"
 }
