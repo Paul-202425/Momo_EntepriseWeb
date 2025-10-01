@@ -58,7 +58,7 @@ Headers:
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 Response Example (200 OK):
 
-json
+```json
 Copy code
 {
   "id": "tx001",
@@ -67,6 +67,7 @@ Copy code
   "receiver_name": "Bob",
   "action": "send"
 }
+```
 Error Codes:
 
 401: Unauthorized
@@ -79,7 +80,7 @@ POST /transactions
 
 Request Example:
 
-json
+```json
 Copy code
 {
   "id": "tx003",
@@ -88,9 +89,10 @@ Copy code
   "receiver_name": "Frank",
   "action": "send"
 }
+```
 Response Example (201 Created):
 
-json
+```json
 Copy code
 {
   "id": "tx003",
@@ -99,6 +101,7 @@ Copy code
   "receiver_name": "Frank",
   "action": "send"
 }
+```
 Error Codes:
 
 400: Empty body / Invalid JSON / Missing required fields / Transaction ID already exists
@@ -111,15 +114,16 @@ PUT /transactions/{id}
 
 Request Example:
 
-json
+```json
 Copy code
 {
   "amount": 80.00,
   "receiver_name": "Grace"
 }
+```
 Response Example (200 OK):
 
-json
+```json
 Copy code
 {
   "id": "tx003",
@@ -128,6 +132,7 @@ Copy code
   "receiver_name": "Grace",
   "action": "send"
 }
+```
 Error Codes:
 
 400: Empty body / Invalid JSON / No updatable fields provided
@@ -149,11 +154,12 @@ Headers:
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 Response Example (200 OK):
 
-json
+```json
 Copy code
 {
   "message": "Transaction tx003 deleted"
 }
+```
 Error Codes:
 
 401: Unauthorized
