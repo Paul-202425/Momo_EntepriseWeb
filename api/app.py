@@ -17,7 +17,7 @@ USERNAME = "admin"
 PASSWORD = "password"
 
 def check_auth(header):
-    """Check Basic Auth header"""
+    """Validate Basic Authentication header from client request"""
     if not header:
         return False
     try:
@@ -31,14 +31,14 @@ def check_auth(header):
         return False
 
 def find_transaction(tx_id):
-    """Find a transaction by id"""
+    """Search for a transaction by its ID in the transactions list"""
     for tx in transactions:
         if tx["id"] == tx_id:
             return tx
     return None
 
 def save_transactions():
-    """Persist transactions back to file"""
+    """Write the updated transactions list back to data.json"""
     with open(os.path.normpath(DATA_PATH), 'w', encoding='utf-8') as f:
         json.dump(transactions, f, indent=2)
 
@@ -50,6 +50,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
     # GET method
     def do_GET(self):
+        """Handle GET requests: fetch all transactions or a specific one"""
         if not check_auth(self.headers.get('Authorization')):
             self._set_headers(401)
             self.wfile.write(json.dumps({"error": "Unauthorized"}).encode())
@@ -75,6 +76,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
     # POST method (add new transaction)
     def do_POST(self):
+        """Handle POST requests: create a new transaction"""
         if not check_auth(self.headers.get('Authorization')):
             self._set_headers(401)
             self.wfile.write(json.dumps({"error": "Unauthorized"}).encode())
@@ -107,7 +109,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps({"error": "Missing required fields"}).encode())
             return
 
-        # Check if ID already exists
+        # Check if ID already exists so as to Prevent duplicate IDs
         if find_transaction(data["id"]):
             self._set_headers(400)
             self.wfile.write(json.dumps({"error": "Transaction with this ID already exists"}).encode())
@@ -120,6 +122,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
     # PUT method (update transaction)
     def do_PUT(self):
+        """Handle PUT requests: update an existing transaction"""
         if not check_auth(self.headers.get('Authorization')):
             self._set_headers(401)
             self.wfile.write(json.dumps({"error": "Unauthorized"}).encode())
@@ -152,6 +155,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps({"error": "Invalid JSON"}).encode())
             return
 
+         # Only allow updating selected fields
         allowed_fields = ["amount", "sender_name", "receiver_name", "action"]
         updated = False
         for k, v in data.items():
@@ -170,6 +174,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
     # DELETE method
     def do_DELETE(self):
+        """Handle DELETE requests: remove a transaction by ID"""
         if not check_auth(self.headers.get('Authorization')):
             self._set_headers(401)
             self.wfile.write(json.dumps({"error": "Unauthorized"}).encode())
@@ -194,6 +199,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(json.dumps({"message": f"Transaction {tx['id']} deleted"}).encode())
 
 def run(server_class=HTTPServer, handler_class=RequestHandler, port=8000):
+    """Start the HTTP server on the given port"""
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(f"Server running on port {port}...")
