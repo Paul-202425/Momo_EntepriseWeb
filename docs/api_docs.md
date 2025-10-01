@@ -1,30 +1,30 @@
-Transactions API Documentation
+# Transactions API Documentation
 
-This API manages SMS transactions, allowing clients to create, read, update, and delete transactions. All endpoints require Basic Authentication.
+This API manages SMS transactions, allowing clients to **create, read, update, and delete transactions**. All endpoints require **Basic Authentication**.
 
-Authentication Credentials:
+**Authentication Credentials:**  
+- Username: `admin`  
+- Password: `password`  
 
-Username: admin
-
-Password: password
-
-All requests must include the header:
+All requests must include the header:  
 
 Authorization: Basic <base64_encoded_username:password>
 
-1. Get All Transactions
 
-Endpoint & Method:
+---
+
+## 1. Get All Transactions
+
+- **Endpoint & Method:**
 
 GET /transactions
 
 
-Request Example:
-
+- **Request Example:**  
+```http
 GET /transactions
 Headers:
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
-
 
 Response Example (200 OK):
 
@@ -45,25 +45,15 @@ Response Example (200 OK):
   }
 ]
 
-
 Error Codes:
 | Code | Description |
 |------|-------------|
 | 401 | Unauthorized (invalid or missing credentials) |
 
-2. Get Transaction by ID
-
-Endpoint & Method:
-
-GET /transactions/{id}
-
-
-Request Example:
-
-GET /transactions/tx001
-Headers:
-Authorization: Basic YWRtaW46cGFzc3dvcmQ=
-
+Error Codes:
+| Code | Description |
+|------|-------------|
+| 401 | Unauthorized (invalid or missing credentials) |
 
 Response Example (200 OK):
 
@@ -75,14 +65,13 @@ Response Example (200 OK):
   "action": "send"
 }
 
-
 Error Codes:
 | Code | Description |
 |------|-------------|
 | 401 | Unauthorized |
 | 404 | Transaction not found |
 
-3. Create a New Transaction
+Create a New Transaction
 
 Endpoint & Method:
 
@@ -103,7 +92,6 @@ Content-Type: application/json
   "receiver_name": "Frank",
   "action": "send"
 }
-
 
 Response Example (201 Created):
 
@@ -122,7 +110,7 @@ Error Codes:
 | 400 | Empty body / Invalid JSON / Missing required fields / Transaction ID already exists |
 | 401 | Unauthorized |
 
-4. Update an Existing Transaction
+Update an Existing Transaction
 
 Endpoint & Method:
 
@@ -141,7 +129,6 @@ Content-Type: application/json
   "receiver_name": "Grace"
 }
 
-
 Response Example (200 OK):
 
 {
@@ -152,7 +139,6 @@ Response Example (200 OK):
   "action": "send"
 }
 
-
 Error Codes:
 | Code | Description |
 |------|-------------|
@@ -160,19 +146,17 @@ Error Codes:
 | 401 | Unauthorized |
 | 404 | Transaction not found |
 
-5. Delete a Transaction
+Delete a Transaction
 
 Endpoint & Method:
 
 DELETE /transactions/{id}
-
 
 Request Example:
 
 DELETE /transactions/tx003
 Headers:
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
-
 
 Response Example (200 OK):
 
