@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
   {
     "protocol": "0",
@@ -256,3 +257,27 @@
     "id": "13913173274"
   }
 ]
+=======
+﻿[
+  {"id": 1, "type": "CASH_IN", "amount": 10.5, "sender": "0788000001", "receiver": "0789000001", "timestamp": "2024-06-01T10:00:00Z", "message": "sample"},
+  {"id": 2, "type": "CASH_OUT", "amount": 12.0, "sender": "0788000002", "receiver": "0789000002", "timestamp": "2024-06-01T10:05:00Z", "message": "sample"},
+  {"id": 3, "type": "TRANSFER", "amount": 15.3, "sender": "0788000003", "receiver": "0789000003", "timestamp": "2024-06-01T10:10:00Z", "message": "sample"},
+  {"id": 4, "type": "AIRTIME", "amount": 5.0, "sender": "0788000004", "receiver": "0789000004", "timestamp": "2024-06-01T10:15:00Z", "message": "sample"},
+  {"id": 5, "type": "CASH_IN", "amount": 20.0, "sender": "0788000005", "receiver": "0789000005", "timestamp": "2024-06-01T10:20:00Z", "message": "sample"},
+  {"id": 6, "type": "TRANSFER", "amount": 30.1, "sender": "0788000006", "receiver": "0789000006", "timestamp": "2024-06-01T10:25:00Z", "message": "sample"},
+  {"id": 7, "type": "CASH_IN", "amount": 50.0, "sender": "0788000007", "receiver": "0789000007", "timestamp": "2024-06-01T10:30:00Z", "message": "sample"},
+  {"id": 8, "type": "CASH_OUT", "amount": 17.0, "sender": "0788000008", "receiver": "0789000008", "timestamp": "2024-06-01T10:35:00Z", "message": "sample"},
+  {"id": 9, "type": "TRANSFER", "amount": 25.5, "sender": "0788000009", "receiver": "0789000009", "timestamp": "2024-06-01T10:40:00Z", "message": "sample"},
+  {"id": 10, "type": "AIRTIME", "amount": 3.2, "sender": "0788000010", "receiver": "0789000010", "timestamp": "2024-06-01T10:45:00Z", "message": "sample"},
+  {"id": 11, "type": "CASH_IN", "amount": 11.0, "sender": "0788000011", "receiver": "0789000011", "timestamp": "2024-06-01T10:50:00Z", "message": "sample"},
+  {"id": 12, "type": "TRANSFER", "amount": 41.0, "sender": "0788000012", "receiver": "0789000012", "timestamp": "2024-06-01T10:55:00Z", "message": "sample"},
+  {"id": 13, "type": "CASH_OUT", "amount": 18.4, "sender": "0788000013", "receiver": "0789000013", "timestamp": "2024-06-01T11:00:00Z", "message": "sample"},
+  {"id": 14, "type": "TRANSFER", "amount": 23.6, "sender": "0788000014", "receiver": "0789000014", "timestamp": "2024-06-01T11:05:00Z", "message": "sample"},
+  {"id": 15, "type": "AIRTIME", "amount": 8.9, "sender": "0788000015", "receiver": "0789000015", "timestamp": "2024-06-01T11:10:00Z", "message": "sample"},
+  {"id": 16, "type": "CASH_IN", "amount": 90.0, "sender": "0788000016", "receiver": "0789000016", "timestamp": "2024-06-01T11:15:00Z", "message": "sample"},
+  {"id": 17, "type": "TRANSFER", "amount": 32.5, "sender": "0788000017", "receiver": "0789000017", "timestamp": "2024-06-01T11:20:00Z", "message": "sample"},
+  {"id": 18, "type": "CASH_OUT", "amount": 12.8, "sender": "0788000018", "receiver": "0789000018", "timestamp": "2024-06-01T11:25:00Z", "message": "sample"},
+  {"id": 19, "type": "TRANSFER", "amount": 14.6, "sender": "0788000019", "receiver": "0789000019", "timestamp": "2024-06-01T11:30:00Z", "message": "sample"},
+  {"id": 20, "type": "AIRTIME", "amount": 6.7, "sender": "0788000020", "receiver": "0789000020", "timestamp": "2024-06-01T11:35:00Z", "message": "sample"}
+]
+>>>>>>> fcaf2d5f24d086c8c4194867bf41a62ed2138c9a
