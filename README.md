@@ -90,3 +90,192 @@ The model applies **referential integrity** using foreign keys to ensure that tr
    ```bash
    git clone https://github.com/<your-username>/Momo_EntepriseWeb.git
    cd Momo_EntepriseWeb
+
+
+
+
+
+
+
+# ALU MoMo REST API (Plain Python `http.server`)
+
+A minimal REST API built **without frameworks** using Python's standard library to expose Mobile Money (MoMo) SMS transaction data. Includes:
+
+- XML → JSON parser
+- CRUD endpoints
+- Basic Authentication
+- Data structure & algorithm (DSA) comparison: linear search vs dictionary lookup
+- Docs, sample cURL tests, and a report template
+
+---
+
+## Project Structure
+
+```
+Momo_EntepriseWeb/
+├─ api/
+│   └─ app.py                     # REST API server with CRUD + Basic Auth
+│
+├─ database/
+│   ├─ database_setup.sql         # SQL schema (Users, Transactions, Categories, etc.)
+│   └─ ERD Image.pdf              # Entity-Relationship Diagram (ERD)
+│
+├─ docs/
+│   └─ api_docs.md                # API endpoint documentation
+│
+├─ dsa/
+│   ├─ parse_xml.py               # Parses modified_sms_v2.xml → JSON
+│   └─ search_bench.py            # Benchmarks linear vs dict lookup
+│
+├─ examples/
+│   └─ (sample/test files if any) # For trials, practice, or sample snippets
+│
+├─ projectdocs/
+│   ├─ Grp2 Database Design Document.pdf   # Detailed ERD design explanation
+│   ├─ AI Usage Log.md                     # Log of AI assistance
+│   └─ json_schemas.json                   # JSON schema mapping for DB tables
+│
+├─ report/
+│   └─ report.md                 # Report draft (to be exported as PDF for submission)
+│
+├─ screenshots/
+│   └─ images    # Postman/cURL screenshots: GET, POST, PUT, DELETE
+│
+├─ data.json                     # Parsed transaction data from XML
+├─ modified_sms_v2.xml           # Original SMS dataset (input file)
+└─ README.md                     # Project overview, objectives, setup instructions
+
+
+## 1) Setup
+
+**Requirements**: Python 3.10+ (standard library only)
+
+```bash
+cd ALU_MoMo_API
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# Mac/Linux: source .venv/bin/activate
+pip install --upgrade pip
+```
+
+Optional: Place your dataset at `./modified_sms_v2.xml` or anywhere else and pass its path to the parser.
+
+---
+
+## 2) Parse XML → JSON
+
+```bash
+# From project root:
+python dsa/parse_xml.py --xml ./modified_sms_v2.xml --out ./data/transactions.json
+```
+
+- If `--xml` is omitted or file not found, the parser will **generate 25 synthetic records** (good enough for DSA tests) and save to `data/transactions.json`.
+
+---
+
+## 3) Run the API
+
+```bash
+# From project root:
+python api/server.py
+```
+
+**Defaults**:
+- Host: `127.0.0.1`
+- Port: `8080`
+- Credentials: `admin : secret` (override with env vars `API_USER` and `API_PASS`)
+- Data file: `./data/transactions.json` (auto-created if missing)
+
+Environment overrides:
+```bash
+# Example
+set API_USER=paul      # Windows (PowerShell: $env:API_USER="paul")
+set API_PASS=strongpw
+set API_HOST=0.0.0.0
+set API_PORT=9090
+set API_DATA=./data/transactions.json
+```
+
+---
+
+## 4) cURL Tests (Screenshots required)
+
+**Base64 helper**: `echo -n "admin:secret" | base64` → `YWRtaW46c2VjcmV0`
+> Or just use `-u admin:secret` with curl.
+
+### 4.1 Unauthorized example (401)
+```bash
+curl -i http://127.0.0.1:8080/transactions
+```
+
+### 4.2 Authorized GET all
+```bash
+curl -i -u admin:secret http://127.0.0.1:8080/transactions
+```
+
+### 4.3 Authorized GET one
+```bash
+curl -i -u admin:secret http://127.0.0.1:8080/transactions/3
+```
+
+### 4.4 POST (create)
+```bash
+curl -i -u admin:secret -H "Content-Type: application/json" -d "{
+  \"type\": \"CASHIN\", \"amount\": 1200, \"sender\": \"0788000000\", \"receiver\": \"MERCHANT123\", \"timestamp\": \"2025-10-02T18:00:00\"
+}" http://127.0.0.1:8080/transactions
+```
+
+### 4.5 PUT (update)
+```bash
+curl -i -u admin:secret -X PUT -H "Content-Type: application/json" -d "{
+  \"amount\": 2000
+}" http://127.0.0.1:8080/transactions/3
+```
+
+### 4.6 DELETE
+```bash
+curl -i -u admin:secret -X DELETE http://127.0.0.1:8080/transactions/3
+```
+
+> 📸 Add screenshots of: 1) successful GET with auth, 2) unauthorized GET, 3) successful POST, PUT, DELETE to `/screenshots/`.
+
+---
+
+## 5) Run DSA Benchmark
+
+```bash
+python dsa/search_bench.py --data ./data/transactions.json --trials 10000
+```
+
+This prints timings for:
+- Linear search over a list
+- O(1)-average dictionary lookup (`id → transaction`)
+
+---
+
+## 6) Documentation & Report
+
+- Edit `docs/api_docs.md` with your examples/results.
+- Fill `report/report.md`, then export as PDF for submission.
+
+---
+
+## 7) GitHub Upload
+
+Initialize the repo and push:
+```bash
+git init
+git add .
+git commit -m "MoMo REST API: CRUD + Basic Auth + DSA benchmark"
+git branch -M main
+git remote add origin <https://github.com/Paul-202425/Momo_EntepriseWeb>
+git push -u origin main
+```
+
+---
+
+## Notes for Markers
+
+- Built with only Python stdlib.
+- Clean separation of concerns: parsing, API, DSA.
+- Comprehensive documentation & screenshots.
