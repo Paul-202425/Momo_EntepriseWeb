@@ -1,0 +1,7 @@
+{
+  "id": "tx999",
+  "amount": 1200,
+  "sender_name": "Jane Doe",
+  "receiver_name": "MERCHANT123",
+  "action": "payment"
+}
